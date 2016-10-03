@@ -2,6 +2,7 @@
 # perl errorURL.pl < eduGAIN-metadata.xml > eduGAIN-errorURLs.txt
 require LWP::UserAgent;
 my $ua = LWP::UserAgent->new;
+$ua->agent('curl/7.43.0'); # seems to help
 while (<>) {
   if (/errorURL=\"(\S+)\"/) {
     my $response = $ua->head($1);
